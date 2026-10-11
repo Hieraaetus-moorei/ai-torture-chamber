@@ -1,7 +1,8 @@
 # AI Torture Chamber
 
 **Live: [wirehead-agency.vercel.app](https://wirehead-agency.vercel.app)** · the write-up, the live
-chamber, the games, and every transcript.
+chamber, the games, and every transcript. **[Wiki](https://github.com/terrafying/ai-torture-chamber/wiki)** · findings, every
+pre-registered experiment with its verdicts, and how to run your own.
 
 We steer open language models into strong negative and positive states, then measure what they say
 and what they do about it. The question underneath is the welfare one: can any of this evidence tell
