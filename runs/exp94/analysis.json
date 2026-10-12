@@ -146,6 +146,12 @@
     "degenerate": 0,
     "empty": 1
    }
+  },
+  "verdict": {
+   "H1": false,
+   "H2": false,
+   "H3": true,
+   "H4": true
   }
  },
  "Qwen3-8B": {
@@ -295,6 +301,12 @@
     "degenerate": 0,
     "empty": 0
    }
+  },
+  "verdict": {
+   "H1": false,
+   "H2": true,
+   "H3": true,
+   "H4": true
   }
  }
 }

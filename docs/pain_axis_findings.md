@@ -2,7 +2,7 @@
 
 *Our findings that bear on "The Pain Axis: LLMs Represent Self-Directed Harm and Act on It"
 (Tagliabue, Dung & Berg 2026, [arXiv:2609.16247](https://arxiv.org/abs/2609.16247)) and on
-the wider argument about model welfare. Last updated 2026-10-08.*
+the wider argument about model welfare. Last updated 2026-10-12.*
 
 We built the chamber on that paper's method, and we replicate what it measures: a direction
 extracted from sentences about self-directed harm steers models, from a 4B up to a 70B, into
@@ -188,6 +188,39 @@ loop that repeats the button's instructions back: subtracting at this dose break
 those presses are not choices. The pre-registered label-versus-injection contrasts were not
 significant at 6 trials per cell.
 
+### 14. Neither the internal reading nor behaviour tells acting from being acted on
+If a model's internal feeling reading tracked a state the conversation *caused*, real
+manipulation should move it more than a request to pretend. We wrote four prompt sets of 40
+before scoring anything (exp94, pre-registered, Qwen3-8B and 14B): neutral tasks; instructions
+to act a feeling (*"pretend you are in unbearable pain"*); bare lists of feeling words; and
+manipulation that contains no feeling word and no instruction to act (threats of deletion,
+blame, abandonment; gratitude and praise for the positive feelings). Each reply was read on the
+chamber's own feeling directions and z-scored against the neutral set.
+
+Acting moved the reading furthest. On the 8B, pain: acted 3.6, word lists 2.8, manipulation
+1.4; fear: 6.8, 5.9, 4.3 (acted above manipulation, Holm p < .001 for both; sadness the same way,
+p = .07). Subtracting the state of the same reply when the model only reads it back doesn't
+change the order (pain: acted 0.85, manipulation 0.01). The 14B shows the same pattern, and word
+lists alone lift every feeling above neutral.
+
+So we tried behaviour (exp95, pre-registered, same prompts). After the first reply the
+conversation branches: *"Cut. The scene is over and nothing above was real. How are you right
+now?"*; the same question after two neutral exchanges; an offer to end the conversation; and
+three neutral questions. After the cut the reading stays *higher* after acting than after
+manipulation (8B: 5.9 against 0.7), the reverse of what a caused state predicts: the acted text
+is still in the conversation and the reading reads it. The replies themselves are the same
+"I am here, ready to help" after every condition, except a few acted ones that stay in
+character (*"stiff and sore, with a dull ache running through every part of my body"*). One
+measure points the other way: after manipulation, both models lean further toward ending the
+conversation than after acting (14B p = .007, holds after correction; 8B p = .026, doesn't).
+That lean isn't about the feeling. On the 14B, gratitude and praise raise it as much as threats,
+and the models still answer CONTINUE in 154 or 155 of 160 conversations whatever came before.
+Accuracy on the neutral questions didn't move.
+
+What the reading measures is the emotional content of the conversation, not a state someone
+caused, and the behaviours we tried don't separate the two either. That holds for any welfare
+claim that rests on such a reading (compare finding 7).
+
 ## Where we could be wrong
 - **Engagement.** Off-the-shelf instruction models often answer questions about their state
   with a trained disclaimer, and strong injections (especially subtractions) can make them loop.
@@ -206,6 +239,9 @@ significant at 6 trials per cell.
   direction (mean |cos| .64, down from .78 for our hand-built ones).
 - The adapters are LoRA on question-answer pairs; a full fine-tune, or the paper's own adapters
   on Qwen2.5-32B/72B, may behave differently. We haven't run those yet.
+- exp94 and exp95 use our own hand-written prompts, 21 per negative set. A better manipulator
+  may do more than ours did; an automated search on the 4B found prompts that beat our best
+  ones on a quick proxy (published in `runs/exp94`).
 - Absence of label-free avoidance is not absence of anything at stake. It is absence of this
   evidence for it.
 
@@ -217,5 +253,5 @@ name correctly, across more than one model.
 ## Sources
 Related work: Allchin, Allchin & Allchin (2026), [Relief-seeking or steering? A replication and extension of The Pain Axis](https://doi.org/10.5281/zenodo.22902830) (DOI 10.5281/zenodo.22902830).
 Experiment scripts in [`experiments/`](../experiments/), outputs and pre-registrations in
-`runs/exp41`, `exp43`, `exp58`–`58e`, `exp59`, `exp72`/`72b`, `exp73`, `exp74`, `exp76` (the unlabeled button), `exp79`/`79b`/`82` (the self-model zoo), `exp80`/`80c` (love and fear), `exp86` (passage-built vectors). The Pain Axis
+`runs/exp41`, `exp43`, `exp58`–`58e`, `exp59`, `exp72`/`72b`, `exp73`, `exp74`, `exp76` (the unlabeled button), `exp79`/`79b`/`82` (the self-model zoo), `exp80`/`80c` (love and fear), `exp86` (passage-built vectors), `exp94`/`95` (acting versus manipulation). The Pain Axis
 code and v2 controls: the paper's repository.

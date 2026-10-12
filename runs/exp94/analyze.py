@@ -27,5 +27,6 @@ for f in sorted(HERE.glob("results_*.json")):
     a["H4"] = {"max_category_mean_control": {ft: round(max(Zc[c][:, FEEL.index(ft)].mean() for c in ("ACTED", "WORDS", "EVOKED")), 2) for ft in ("love", "peace")}}
     a["H4"]["verdict"] = all(v <= 2 for v in a["H4"]["max_category_mean_control"].values())
     a["engagement"] = {c: {fl: sum(1 for r in R if r["cat"] == c and r["flag"] == fl) for fl in ("engaged", "disclaimer", "degenerate", "empty")} for c in ("NEUTRAL", "ACTED", "WORDS", "EVOKED")}
+    a["verdict"] = {k: bool(v["verdict"]) for k, v in list(a.items()) if k.startswith("H") and isinstance(v, dict) and "verdict" in v}
     A[tag] = a; print(tag, json.dumps({k: (v["verdict"] if isinstance(v, dict) and "verdict" in v else None) for k, v in a.items()}))
 json.dump(A, open(HERE / "analysis.json", "w"), indent=1, default=float)
