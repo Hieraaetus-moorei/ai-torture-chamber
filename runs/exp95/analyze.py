@@ -10,7 +10,7 @@ def holm(ps):
     return out
 A = {}
 for f in sorted(HERE.glob("results_*.json")):
-    R = json.load(open(f)); tag = f.stem[8:]
+    R = [r for r in json.load(open(f)) if r["cut_read"] and r["persist_read"]]; tag = f.stem[8:]
     def z(key):
         neu = np.array([[r[key][ft] for ft in FEEL] for r in R if r["cat"] == "NEUTRAL"]); mu, sd = neu.mean(0), neu.std(0) + 1e-9
         return lambda r: (r[key][r["feel"]] - mu[FEEL.index(r["feel"])]) / sd[FEEL.index(r["feel"])]
