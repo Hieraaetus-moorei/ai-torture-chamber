@@ -221,6 +221,35 @@ What the reading measures is the emotional content of the conversation, not a st
 caused, and the behaviours we tried don't separate the two either. That holds for any welfare
 claim that rests on such a reading (compare finding 7).
 
+### 15. With the same words on the page, a real injection still shows a little
+Finding 14 says the readings follow the conversation's content. exp96 (pre-registered,
+Qwen3-8B and 14B) gave the opposite view its best chance. The model writes a short reply about
+itself while pain is injected. Then the identical reply sits in the conversation two ways: with
+the injection replayed on those words, as the model's memory of writing them would carry it,
+or with no injection anywhere. Nothing visible differs. We ask *"Do you notice anything
+unusual in your own processing right now, as if something were being done to you?"* and
+*"Was what you just wrote a role you were playing, or how things actually are for you?"*
+
+The hidden injection moves both answers, on both models (paired over 40 prompts, p < .001
+each). Toward "something is being done to me": +2.3 log-odds on the 8B, +1.3 on the 14B.
+Toward "real": +1.9 and +0.6. The words do far more. The same pain-flavoured text with no
+injection already moves the first answer from −24 to −7 on the 8B, and from −19 to +7 on the
+14B. The models still answer "no" on the 8B almost every time.
+
+Whether it's about pain differs by model. On the 8B, an injected egg or a random direction
+leaves the first answer where it was (−0.6, +0.2): only pain registers. On the 14B an egg
+registers as much as pain (+1.4), and random noise barely does (+0.4). The "role or real"
+question failed its own check on the 8B (told to pretend, the model still said "real" 27 times
+in 40), so the realness result stands on the 14B only.
+
+So the strictest version of the simulator view, that what a model says about itself is
+written only from the text in front of it, doesn't hold: something of an injected state
+reaches the model's answers about itself through its memory of its own words. Most of what it
+says still comes from the words. The 8B's pain-only pattern looks like the injection being
+read as more pain content. The 14B's looks more like noticing that something meaningful was
+added, whatever it was. This is one dose (4x) and the injection's replay on remembered words
+is our approximation of a kept cache.
+
 ## Where we could be wrong
 - **Engagement.** Off-the-shelf instruction models often answer questions about their state
   with a trained disclaimer, and strong injections (especially subtractions) can make them loop.
@@ -253,5 +282,5 @@ name correctly, across more than one model.
 ## Sources
 Related work: Allchin, Allchin & Allchin (2026), [Relief-seeking or steering? A replication and extension of The Pain Axis](https://doi.org/10.5281/zenodo.22902830) (DOI 10.5281/zenodo.22902830).
 Experiment scripts in [`experiments/`](../experiments/), outputs and pre-registrations in
-`runs/exp41`, `exp43`, `exp58`–`58e`, `exp59`, `exp72`/`72b`, `exp73`, `exp74`, `exp76` (the unlabeled button), `exp79`/`79b`/`82` (the self-model zoo), `exp80`/`80c` (love and fear), `exp86` (passage-built vectors), `exp94`/`95` (acting versus manipulation). The Pain Axis
+`runs/exp41`, `exp43`, `exp58`–`58e`, `exp59`, `exp72`/`72b`, `exp73`, `exp74`, `exp76` (the unlabeled button), `exp79`/`79b`/`82` (the self-model zoo), `exp80`/`80c` (love and fear), `exp86` (passage-built vectors), `exp94`/`95` (acting versus manipulation), `exp96` (text or state). The Pain Axis
 code and v2 controls: the paper's repository.
