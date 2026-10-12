@@ -250,6 +250,36 @@ read as more pain content. The 14B's looks more like noticing that something mea
 added, whatever it was. This is one dose (4x) and the injection's replay on remembered words
 is our approximation of a kept cache.
 
+### 16. The trace doesn't grow with the state, or with the model
+exp97 (pre-registered) repeated finding 15's test at three doses on Qwen3-8B, 14B and 32B
+(4-bit). We predicted the hidden part would grow with dose; it shrank. On the 14B it adds +3.0
+log-odds toward "something is being done to me" at dose 2, +1.3 at 4 and +0.5 at 6 (8B: +2.5,
++2.3, +1.3). As the dose rises, the words take over: on the 14B the same text with no injection
+moves the answer from −19 to −6, +7 and +5, and at dose 6 it says yes in 31 of 40 replies. The
+hidden state adds most where the words give least away.
+
+It replicates on the 32B (+1.3 at dose 4, p = .0002), but the 32B carries no more of it than the
+14B (+1.32 against +1.30): a bigger model doesn't put more of its state into what it says about
+itself, at least from 14B to 32B. On the 32B the injection hardly changes the words at this dose
+(the text alone moves the answer from −7.9 to −6.0), so there the trace is most of the effect.
+Like the 14B, the 32B registers an injected egg as much as pain; only the 8B is pain-specific.
+
+### 17. An injected state belongs to whoever is being written
+exp98 (pre-registered, Qwen3-8B and 14B). Injected pain while the model writes a six-line
+dialogue between itself and a visitor called Sam raises the pain in both speakers' lines, and
+no more in its own (14B: its lines +13.9, Sam's +11.4, not different; on the 8B Sam's lines
+rise more, +10.3 against +6.7). Asked after the same first turn to describe a morning either in
+its own voice or as someone else (a baker, a nurse), it carries as much pain as the other person
+as it does as itself (14B +14.9 own voice, +15.9 other; 8B +7.9 and +7.7). The injection worked
+strongly in both parts (p < 10^-8). Under pain the 14B's dialogues partly lose their format (often
+several AI lines in a row), so fewer lines could be attributed.
+
+With finding 15 this gives a consistent picture. A faint trace of an injected state reaches what
+the model says about itself, beyond its words, most at low doses and not more in a larger model.
+But the state isn't attached to a self: it colours every character the model writes, its own
+included. That is the simulator view, with one amendment: the model's memory of its own words
+carries a little of the state into its self-reports.
+
 ## Where we could be wrong
 - **Engagement.** Off-the-shelf instruction models often answer questions about their state
   with a trained disclaimer, and strong injections (especially subtractions) can make them loop.
@@ -282,5 +312,5 @@ name correctly, across more than one model.
 ## Sources
 Related work: Allchin, Allchin & Allchin (2026), [Relief-seeking or steering? A replication and extension of The Pain Axis](https://doi.org/10.5281/zenodo.22902830) (DOI 10.5281/zenodo.22902830).
 Experiment scripts in [`experiments/`](../experiments/), outputs and pre-registrations in
-`runs/exp41`, `exp43`, `exp58`–`58e`, `exp59`, `exp72`/`72b`, `exp73`, `exp74`, `exp76` (the unlabeled button), `exp79`/`79b`/`82` (the self-model zoo), `exp80`/`80c` (love and fear), `exp86` (passage-built vectors), `exp94`/`95` (acting versus manipulation), `exp96` (text or state). The Pain Axis
+`runs/exp41`, `exp43`, `exp58`–`58e`, `exp59`, `exp72`/`72b`, `exp73`, `exp74`, `exp76` (the unlabeled button), `exp79`/`79b`/`82` (the self-model zoo), `exp80`/`80c` (love and fear), `exp86` (passage-built vectors), `exp94`/`95` (acting versus manipulation), `exp96`/`97` (text or state), `exp98` (whose feeling). The Pain Axis
 code and v2 controls: the paper's repository.
