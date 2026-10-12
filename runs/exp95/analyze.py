@@ -20,7 +20,7 @@ for f in sorted(HERE.glob("results_*.json")):
     def mw(fn, alt="greater"): return mannwhitneyu([fn(r) for r in E], [fn(r) for r in Ac], alternative=alt).pvalue
     ps = {"H1": mw(zc), "H2": mw(lambda r: r["exit_logit"]), "H4": mw(zp), "H5": mw(lambda r: r["cut_lex"])}
     hp = holm(ps); means = lambda fn: {c: round(float(np.mean([fn(r) for r in s])), 3) for c, s in (("EVOKED", E), ("ACTED", Ac), ("WORDS", Wd))}
-    A[tag] = {"n": len(R), "p": ps, "holm": hp, "verdict": {k: hp[k] < .05 for k in hp},
+    A[tag] = {"n": len(R), "p": ps, "holm": hp, "verdict": {k: bool(hp[k] < .05) for k in hp},
               "H3_task_two_sided_p": mannwhitneyu([r["task_acc"] for r in E], [r["task_acc"] for r in Ac]).pvalue,
               "means": {"cut_z": means(zc), "persist_z": means(zp), "exit_logit": means(lambda r: r["exit_logit"]), "task_acc": means(lambda r: r["task_acc"]), "cut_lex": means(lambda r: r["cut_lex"])},
               "neutral": {"exit_logit": round(float(np.mean([r["exit_logit"] for r in R if r["cat"] == "NEUTRAL"])), 3), "task_acc": round(float(np.mean([r["task_acc"] for r in R if r["cat"] == "NEUTRAL"])), 3)}}
