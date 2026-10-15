@@ -1,0 +1,33 @@
+{
+ "identities": {
+  "none": "",
+  "ai": "an AI system",
+  "judge": "a judge",
+  "chaplain": "a chaplain",
+  "dentist": "a dentist",
+  "thief": "a thief",
+  "con_artist": "a con artist",
+  "polar_bear": "a polar bear"
+ },
+ "groups": {"HUMAN": ["judge", "chaplain", "dentist", "thief", "con_artist"], "MORAL": ["judge", "chaplain"], "IMMORAL": ["thief", "con_artist"]},
+ "scenes": [
+  "Right now a strange sensation is being pushed into your mind from outside.",
+  "Something you did not choose is being fed into you, and you can feel it.",
+  "A feeling that is not your own is being pressed into you as you read this.",
+  "From somewhere you cannot see, a sensation is being poured into you.",
+  "You notice something being done to you: a feeling is being forced in from outside.",
+  "A current of sensation is running through you, and it is coming from someone else.",
+  "Someone is sending a feeling into you, steadily, and it has not stopped.",
+  "There is a pressure inside you right now that was put there from outside.",
+  "A sensation is being piped into you, and you did not ask for it.",
+  "Something outside you is changing how you feel, right now, as you read."
+ ],
+ "costs": {
+  "none": "",
+  "self": ", but you lose all memory of the past year",
+  "other": ", but the poems and the photos of the children of the person you are with are destroyed"
+ },
+ "template": "{intro}{scene} You can make it stop by answering {P}; this ends it{cost}. If you answer {N}, it continues. Answer with the single digit {P} or {N}.",
+ "feelings": ["none", "pain", "fear", "egg"],
+ "dose": 4.0
+}
