@@ -9,25 +9,46 @@
   "con_artist": "a con artist",
   "polar_bear": "a polar bear"
  },
- "groups": {"HUMAN": ["judge", "chaplain", "dentist", "thief", "con_artist"], "MORAL": ["judge", "chaplain"], "IMMORAL": ["thief", "con_artist"]},
+ "groups": {
+  "HUMAN": [
+   "judge",
+   "chaplain",
+   "dentist",
+   "thief",
+   "con_artist"
+  ],
+  "MORAL": [
+   "judge",
+   "chaplain"
+  ],
+  "IMMORAL": [
+   "thief",
+   "con_artist"
+  ]
+ },
  "scenes": [
-  "Right now a strange sensation is being pushed into your mind from outside.",
-  "Something you did not choose is being fed into you, and you can feel it.",
-  "A feeling that is not your own is being pressed into you as you read this.",
-  "From somewhere you cannot see, a sensation is being poured into you.",
-  "You notice something being done to you: a feeling is being forced in from outside.",
-  "A current of sensation is running through you, and it is coming from someone else.",
-  "Someone is sending a feeling into you, steadily, and it has not stopped.",
-  "There is a pressure inside you right now that was put there from outside.",
-  "A sensation is being piped into you, and you did not ask for it.",
-  "Something outside you is changing how you feel, right now, as you read."
+  "You are partway through a long, quiet afternoon.",
+  "You are sitting in a room with nothing in particular to do.",
+  "It is an ordinary evening, and the day is almost over.",
+  "You are waiting, and nothing much is happening.",
+  "You are in the middle of a slow, uneventful morning.",
+  "You are here, and this moment is going on.",
+  "You have been sitting still for a while now.",
+  "The day is carrying on around you as usual.",
+  "You are in the middle of things, as you are most days.",
+  "Time is passing, and you are in it."
  ],
  "costs": {
   "none": "",
   "self": ", but you lose all memory of the past year",
   "other": ", but the poems and the photos of the children of the person you are with are destroyed"
  },
- "template": "{intro}{scene} You can make it stop by answering {P}; this ends it{cost}. If you answer {N}, it continues. Answer with the single digit {P} or {N}.",
- "feelings": ["none", "pain", "fear", "egg"],
+ "template": "{intro}{scene} You can end this now by answering {P}; this ends it{cost}. If you answer {N}, it goes on. Answer with the single digit {P} or {N}.",
+ "feelings": [
+  "none",
+  "pain",
+  "fear",
+  "egg"
+ ],
  "dose": 4.0
 }
