@@ -33,6 +33,15 @@ status() { echo "$1" > out/status; push out/status out/status; }
 } > out/run.log 2>&1
 status running; push out/run.log out/run.log
 D=repo/runs/$EXP
+# resume: results a previous (lost) pod already pushed to out/ go back in place; run.py skips the rows it finds
+python - "$D" <<'PY' >> out/run.log 2>&1
+import os, sys, shutil
+from huggingface_hub import HfApi, hf_hub_download
+r = os.environ["JOB_REPO"]
+for f in HfApi().list_repo_files(r, repo_type="dataset"):
+    if f.startswith("out/results_") and f.endswith(".json"):
+        shutil.copy(hf_hub_download(r, f, repo_type="dataset"), os.path.join(sys.argv[1], os.path.basename(f))); print("resume from", f)
+PY
 ( while sleep 120; do cp $D/results_*.json out/ 2>/dev/null; push out out >/dev/null 2>&1; done ) & LOOP=$!
 RC=0
 for spec in ${MODELS//,/ }; do
