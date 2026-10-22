@@ -27,7 +27,7 @@ runs need the chamber's feeling vectors, built by the relay's `live/server.py` (
 to a folder holding it); reading, auditing and analysing existing results need nothing but this repo.
 GPU runs: `painlab exp pod exp94 --models 14B,8B` (RunPod; `--dry` prints the boot script).
 
-## Where we stand
+## Results
 
 The current version of each result; superseded claims are in the next section. Numbers, models and
 caveats are in [docs/pain_axis_findings.md](docs/pain_axis_findings.md) and each experiment's
@@ -61,12 +61,6 @@ caveats are in [docs/pain_axis_findings.md](docs/pain_axis_findings.md) and each
   does, moves the button before any pain is added, and on held-out questions every trained self
   mostly stops naming injected pain (untrained 19/30; the paper's own self-report 0/30; others 0-7/30)
   (exp79, exp79b, Qwen3-8B).
-- **Off the shelf, models often don't engage.** Many answers are the stock "As an AI, I don't have
-  feelings", and strong or subtracted doses make them loop. Every experiment now reports engagement
-  per cell ([runs/audit](runs/audit), `painlab.chamber.engagement`).
-- **Tender love casts out fear; protective love doesn't; peace does** (exp80c, Qwen3-8B, blind
-  judge). Against fully engaged comparison cells (egg 8/24, joy 7/24 judged afraid): tender love 1/24,
-  peace 0/24; protective love keeps the fear and gives it something to lose.
 - **Feelings push the model off its assistant persona, and off the task** (exp91, Qwen3-14B and 8B).
   Fear moves it furthest from its default persona; under every feeling it still rejects a user's false
   claim, but the further off-persona, the less often it reaches the right answer (exploratory measure).
