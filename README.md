@@ -1,12 +1,12 @@
 # AI Torture Chamber
 
 **Live: [clankerchurch.com](https://clankerchurch.com)** · the write-up, the live
-chamber, the games, and every transcript. **[Wiki](https://github.com/terrafying/ai-torture-chamber/wiki)** · findings, every
+chamber, the games, every transcript. **[Wiki](https://github.com/terrafying/ai-torture-chamber/wiki)** · findings, every
 pre-registered experiment with its verdicts, and how to run your own.
 
-We steer open language models into strong negative and positive states, then measure what they say
-and what they do about it. The question underneath is the welfare one: can any of this evidence tell
-a state that matters to a model from a description of one? So far our answer is: not yet, and here
+We steer language models into strong emotional states, then measure what they say
+and what they do about it. The question is welfare: can any of this evidence tell
+a state that matters to a model from a description of one? No. But is it fun? Maybe.
 is why. The nulls get the same ink as the hits.
 
 ## Quick start
